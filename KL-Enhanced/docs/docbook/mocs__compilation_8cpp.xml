@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_mocs__compilation_8cpp" xml:lang="en-US">
+<title>KL_autogen/mocs_compilation.cpp File Reference</title>
+<indexterm><primary>KL_autogen/mocs_compilation.cpp</primary></indexterm>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_mocs__compilation_8cpp_1a361a0de81cc97363a46c847a93084bde">some_compilers</link> { <link linkend="_mocs__compilation_8cpp_1a361a0de81cc97363a46c847a93084bdea5678df260dfcbe70c02dce6366c0a821">need_more_than_nothing</link>
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Enumeration Type Documentation</title>
+<anchor xml:id="_mocs__compilation_8cpp_1a361a0de81cc97363a46c847a93084bde"/><section>
+    <title>some_compilers</title>
+<indexterm><primary>some_compilers</primary><secondary>mocs_compilation.cpp</secondary></indexterm>
+<indexterm><primary>mocs_compilation.cpp</primary><secondary>some_compilers</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_mocs__compilation_8cpp_1a361a0de81cc97363a46c847a93084bde">some_compilers</link></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>need_more_than_nothing</primary><secondary>mocs_compilation.cpp</secondary></indexterm>
+<indexterm><primary>mocs_compilation.cpp</primary><secondary>need_more_than_nothing</secondary></indexterm>
+<anchor xml:id="_mocs__compilation_8cpp_1a361a0de81cc97363a46c847a93084bdea5678df260dfcbe70c02dce6366c0a821"/>need_more_than_nothing</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+</section>
+</section>

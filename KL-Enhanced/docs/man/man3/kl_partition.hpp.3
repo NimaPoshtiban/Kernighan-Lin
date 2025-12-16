@@ -1,0 +1,371 @@
+.TH "C:/Users/Nima/Documents/KL/kl_partition.hpp" 3 "Tue Dec 16 2025 05:05:30" "Kernighan Lin algorithm (KL)" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/Nima/Documents/KL/kl_partition.hpp
+.SH SYNOPSIS
+.br
+.PP
+\fR#include <Qstring>\fP
+.br
+\fR#include <vector>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBcluster_partition\fP (int p) noexcept"
+.br
+.RI "Performs clustering merge on a given partition\&. "
+.ti -1c
+.RI "double \fBcluster_variance\fP (const vector< int > &C) noexcept"
+.br
+.RI "Computes variance of a cluster\&. "
+.ti -1c
+.RI "int \fBcompute_cut\fP () noexcept"
+.br
+.RI "Computes total cut size for current partition\&. "
+.ti -1c
+.RI "int \fBcompute_DV\fP (const vector< int > &C, int p) noexcept"
+.br
+.RI "Computes D(V) for a cluster\&. "
+.ti -1c
+.RI "void \fBinitial_partition\fP (QString filepath) noexcept"
+.br
+.RI "Initializes partitions from an adjacency matrix file\&. "
+.ti -1c
+.RI "int \fBkl_gain\fP (const vector< int > &A, const vector< int > &B) noexcept"
+.br
+.RI "Computes KL gain for swapping two clusters\&. "
+.ti -1c
+.RI "void \fBkl_pass\fP () noexcept"
+.br
+.RI "Performs one pass of the Kernighan–Lin algorithm\&. "
+.ti -1c
+.RI "void \fBwrite_metrics\fP (const char *filename)"
+.br
+.RI "Writes final cut and cluster variances to a file\&. "
+.ti -1c
+.RI "void \fBwrite_partition\fP (const char *filename)"
+.br
+.RI "Writes node-to-partition mapping to a file\&. "
+.ti -1c
+.RI "void \fBwrite_trace\fP (const char *filename)"
+.br
+.RI "Writes cut evolution per iteration to a CSV file\&. "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "static vector< int > \fBcut_trace\fP"
+.br
+.RI "Stores cut size after each KL swap\&. "
+.ti -1c
+.RI "static vector< vector< int > > \fBedges\fP"
+.br
+.RI "Adjacency matrix storing edge weights\&. "
+.ti -1c
+.RI "static int \fBM\fP {}"
+.br
+.RI "Total number of edges in the hypergraph\&. "
+.ti -1c
+.RI "static int \fBN\fP {}"
+.br
+.RI "Total number of nodes in the hypergraph\&. "
+.ti -1c
+.RI "static std::array< std::vector< std::vector< int > >, 2 > \fBpart\fP"
+.br
+.RI "Partition data structure\&. "
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void cluster_partition (int p)\fR [noexcept]\fP"
+
+.PP
+Performs clustering merge on a given partition\&. Iteratively merges clusters if variance decreases\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIp\fP Partition index (0 or 1)
+.RE
+.PP
+Performs clustering merge on a given partition\&.
+
+.PP
+Iteratively merges clusters if combined variance decreases\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIp\fP Partition index (0 or 1) 
+.RE
+.PP
+
+.SS "double cluster_variance (const vector< int > & C)\fR [noexcept]\fP"
+
+.PP
+Computes variance of a cluster\&. Variance is used to measure how "spread out" the connection weights are within a cluster\&. Minimizing variance when merging clusters ensures that highly connected nodes are grouped together, improving cluster cohesion\&. (as the the professor mentioned)
+
+.PP
+Given a cluster $C$ of nodes, let $w_{uv}$ be the weight of the edge from node $u$ to node $v$\&. The variance is computed as:
+
+.PP
+\[\text{Var}(C) = \frac{1}{|C|\cdot N} \sum_{u \in C} \sum_{v=0}^{N-1} w_{uv}^2
+- \left(\frac{1}{|C|\cdot N} \sum_{u \in C} \sum_{v=0}^{N-1} w_{uv} \right)^2
+\]
+.PP
+where $N$ is the total number of nodes in the hypergraph\&.
+
+.PP
+Lower variance indicates that nodes in the cluster have more uniform and strong connections among themselves\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIC\fP Cluster of nodes 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Variance value
+.RE
+.PP
+Variance is calculated over all edge weights within the cluster\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIC\fP Cluster of nodes 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Variance value 
+.RE
+.PP
+
+.SS "int compute_cut ()\fR [noexcept]\fP"
+
+.PP
+Computes total cut size for current partition\&. Cut is defined as sum of edge weights from partition 0 to partition 1\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Total cut value
+.RE
+.PP
+Computes total cut size for current partition\&.
+
+.PP
+Cut is defined as the sum of all edge weights from nodes in partition 0 to nodes in partition 1\&.
+
+.PP
+\fBReturns\fP
+.RS 4
+Total cut value 
+.RE
+.PP
+
+.SS "int compute_DV (const vector< int > & C, int p)\fR [noexcept]\fP"
+
+.PP
+Computes D(V) for a cluster\&. D(V) = external_connections - internal_connections
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIC\fP Cluster of nodes 
+.br
+\fIp\fP Partition index (0 or 1) 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Difference between external and internal connections
+.RE
+.PP
+D(V) = external_connections - internal_connections
+
+.PP
+External connections are edges from this cluster to all clusters in the opposite partition\&. Internal connections are edges from this cluster to other clusters in the same partition\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIC\fP Cluster of nodes 
+.br
+\fIp\fP Partition index (0 or 1) 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Difference between external and internal connections 
+.RE
+.PP
+
+.SS "void initial_partition (QString filepath)\fR [noexcept]\fP"
+
+.PP
+Initializes partitions from an adjacency matrix file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilepath\fP Path to csv file containing adjacency matrix (file extension is not important)
+.RE
+.PP
+Initializes partitions from an adjacency matrix file\&.
+
+.PP
+Reads a CSV file where each row corresponds to a node and contains edge weights to all other nodes\&. Diagonal elements represent the node itself and are ignored\&. Initializes a simple even-odd partition: nodes 0,2,4,\&.\&.\&. go to partition 0, others to partition 1\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilepath\fP Path to the CSV file containing adjacency matrix 
+.RE
+.PP
+
+.SS "int kl_gain (const vector< int > & A, const vector< int > & B)\fR [noexcept]\fP"
+
+.PP
+Computes KL gain for swapping two clusters\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIA\fP Cluster from partition 0 
+.br
+\fIB\fP Cluster from partition 1 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+KL gain value
+.RE
+.PP
+Computes KL gain for swapping two clusters\&.
+
+.PP
+Gain = D(A) + D(B) - 2 * edge_sum_between_A_B
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIA\fP Cluster from partition 0 
+.br
+\fIB\fP Cluster from partition 1 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+KL gain value
+.RE
+.PP
+Performs one Kernighan–Lin pass
+
+.PP
+Swaps cluster pairs between partitions to maximize gain\&. Records the cut evolution in global cut_trace\&.
+
+.PP
+Algorithm:
+.IP "1." 4
+For each unlocked cluster in partition 0, compute gain with each unlocked cluster in partition 1\&.
+.IP "2." 4
+Select the pair with maximum gain and swap them\&.
+.IP "3." 4
+Lock the swapped clusters\&.
+.IP "4." 4
+Repeat until all clusters are locked or no positive gain\&.
+.IP "5." 4
+Rollback swaps after best prefix sum of gains\&. 
+.PP
+
+.SS "void kl_pass ()\fR [noexcept]\fP"
+
+.PP
+Performs one pass of the Kernighan–Lin algorithm\&. Selects cluster pairs to swap to maximize gain\&. Records cut evolution in cut_trace\&. 
+.SS "void write_metrics (const char * filename)"
+
+.PP
+Writes final cut and cluster variances to a file\&. Also writes the evolution of cuts stored in cut_trace\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilename\fP Output file path
+.RE
+.PP
+Writes final cut and cluster variances to a file\&.
+
+.PP
+Also writes all cut values stored in cut_trace\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilename\fP Output file path 
+.RE
+.PP
+
+.SS "void write_partition (const char * filename)"
+
+.PP
+Writes node-to-partition mapping to a file\&. Format: node_index partition_index
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilename\fP Output file path 
+.RE
+.PP
+
+.SS "void write_trace (const char * filename)"
+
+.PP
+Writes cut evolution per iteration to a CSV file\&. Format: step,cut_value
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilename\fP Output file path
+.RE
+.PP
+Writes cut evolution per iteration to a CSV file\&.
+
+.PP
+Format: step,cut_value
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilename\fP Output CSV file path 
+.RE
+.PP
+
+.SH "Variable Documentation"
+.PP 
+.SS "vector<int> cut_trace\fR [static]\fP"
+
+.PP
+Stores cut size after each KL swap\&. 
+.SS "vector<vector<int> > edges\fR [static]\fP"
+
+.PP
+Adjacency matrix storing edge weights\&. Each row corresponds to a node\&. edges[i][j] is the weight of the edge from node i to node j\&. Diagonal elements (i==j) represent the node itself and are zero\&. 
+.SS "int M {}\fR [static]\fP"
+
+.PP
+Total number of edges in the hypergraph\&. 
+.SS "int N {}\fR [static]\fP"
+
+.PP
+Total number of nodes in the hypergraph\&. 
+.SS "std::array<std::vector<std::vector<int> >, 2> part\fR [static]\fP"
+
+.PP
+Partition data structure\&. part[0] and part[1] store the clusters in partition 0 and 1 respectively\&. Each cluster is a vector of node indices\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Kernighan Lin algorithm (KL) from the source code\&.

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_140925b5b5dd8181833236e175c0691f" xml:lang="en-US">
+<title>KL_autogen Directory Reference</title>
+<indexterm><primary>KL_autogen Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_moc__predefs_8h">moc_predefs.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_mocs__compilation_8cpp">mocs_compilation.cpp</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

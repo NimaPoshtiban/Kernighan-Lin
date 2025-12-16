@@ -1,0 +1,608 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="kl__partition_8cpp" kind="file" language="C++">
+    <compoundname>kl_partition.cpp</compoundname>
+    <includes refid="kl__partition_8hpp" local="yes">kl_partition.hpp</includes>
+    <includes local="no">QFile</includes>
+    <includes local="no">QMap</includes>
+    <includes local="no">QTextStream</includes>
+    <includes local="no">Qstring</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>C:/Users/Nima/Documents/KL/kl_partition.cpp</label>
+        <link refid="kl__partition_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>kl_partition.hpp</label>
+        <link refid="kl__partition_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>QFile</label>
+      </node>
+      <node id="6">
+        <label>QMap</label>
+      </node>
+      <node id="7">
+        <label>QTextStream</label>
+      </node>
+      <node id="3">
+        <label>Qstring</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="kl__partition_8cpp_1ab872a667ec713129635bc000db1ad613" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void cluster_partition</definition>
+        <argsstring>(int p) noexcept</argsstring>
+        <name>cluster_partition</name>
+        <param>
+          <type>int</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Performs clustering merge for a given partition. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Performs clustering merge on a given partition.</para>
+<para>Iteratively merges clusters if combined variance decreases.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>p</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Partition index (0 or 1) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.cpp" line="230" column="6" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="230" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8cpp_1a37f39f025535112ebaec0dd0ac583afd" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double cluster_variance</definition>
+        <argsstring>(const vector&lt; int &gt; &amp;C) noexcept</argsstring>
+        <name>cluster_variance</name>
+        <param>
+          <type>const vector&lt; int &gt; &amp;</type>
+          <declname>C</declname>
+        </param>
+        <briefdescription>
+<para>Computes variance of a cluster. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Variance is calculated over all edge weights within the cluster.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>C</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cluster of nodes </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Variance value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.cpp" line="206" column="8" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="206" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8cpp_1add0f8d8534b753d724adac13fcd8197d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int compute_cut</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>compute_cut</name>
+        <briefdescription>
+<para>Computes the total cut for current partitions. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes total cut size for current partition.</para>
+<para>Cut is defined as the sum of all edge weights from nodes in partition 0 to nodes in partition 1.</para>
+<para><simplesect kind="return"><para>Total cut value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.cpp" line="54" column="5" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="54" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8cpp_1aa34c985301df7cde4c1c68d92abb7c35" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int compute_DV</definition>
+        <argsstring>(const vector&lt; int &gt; &amp;C, int p) noexcept</argsstring>
+        <name>compute_DV</name>
+        <param>
+          <type>const vector&lt; int &gt; &amp;</type>
+          <declname>C</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Computes D(V) for a cluster. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>D(V) = external_connections - internal_connections</para>
+<para>External connections are edges from this cluster to all clusters in the opposite partition. Internal connections are edges from this cluster to other clusters in the same partition.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>C</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cluster of nodes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Partition index (0 or 1) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Difference between external and internal connections </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.cpp" line="83" column="5" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="83" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8cpp_1a87bb141a82a3218ac8433cf122cf698e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void initial_partition</definition>
+        <argsstring>(QString filepath) noexcept</argsstring>
+        <name>initial_partition</name>
+        <param>
+          <type>QString</type>
+          <declname>filepath</declname>
+        </param>
+        <briefdescription>
+<para>Initializes the partitions from a CSV adjacency matrix file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes partitions from an adjacency matrix file.</para>
+<para>Reads a CSV file where each row corresponds to a node and contains edge weights to all other nodes. Diagonal elements represent the node itself and are ignored. Initializes a simple even-odd partition: nodes 0,2,4,... go to partition 0, others to partition 1.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filepath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path to the CSV file containing adjacency matrix </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.cpp" line="17" column="6" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="17" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8cpp_1a01d2d5ab4c8d0d4cb049c0cb2c803a99" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int kl_gain</definition>
+        <argsstring>(const vector&lt; int &gt; &amp;A, const vector&lt; int &gt; &amp;B) noexcept</argsstring>
+        <name>kl_gain</name>
+        <param>
+          <type>const vector&lt; int &gt; &amp;</type>
+          <declname>A</declname>
+        </param>
+        <param>
+          <type>const vector&lt; int &gt; &amp;</type>
+          <declname>B</declname>
+        </param>
+        <briefdescription>
+<para>Computes the KL gain of swapping two clusters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes KL gain for swapping two clusters.</para>
+<para>Gain = D(A) + D(B) - 2 * edge_sum_between_A_B</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cluster from partition 0 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>B</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cluster from partition 1 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>KL gain value</para>
+</simplesect>
+Performs one Kernighan–Lin pass</para>
+<para>Swaps cluster pairs between partitions to maximize gain. Records the cut evolution in global cut_trace.</para>
+<para>Algorithm:<orderedlist>
+<listitem><para>For each unlocked cluster in partition 0, compute gain with each unlocked cluster in partition 1.</para>
+</listitem><listitem><para>Select the pair with maximum gain and swap them.</para>
+</listitem><listitem><para>Lock the swapped clusters.</para>
+</listitem><listitem><para>Repeat until all clusters are locked or no positive gain.</para>
+</listitem><listitem><para>Rollback swaps after best prefix sum of gains. </para>
+</listitem></orderedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.cpp" line="127" column="5" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="127" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8cpp_1a49addcfe8c198526df579d1d13a426d6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void kl_pass</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>kl_pass</name>
+        <briefdescription>
+<para>Performs one pass of the Kernighan–Lin algorithm. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Selects cluster pairs to swap to maximize gain. Records cut evolution in cut_trace. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.cpp" line="137" column="6" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="137" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8cpp_1a73773552b90fec6ea5827868d2f0b7b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void write_metrics</definition>
+        <argsstring>(const char *filename)</argsstring>
+        <name>write_metrics</name>
+        <param>
+          <type>const char *</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+<para>Writes final cut evolution and cluster variances to a file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Writes final cut and cluster variances to a file.</para>
+<para>Also writes all cut values stored in cut_trace.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output file path </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.cpp" line="296" column="6" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="296" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8cpp_1a16e2544f842cc0163cfcebee9a0f6483" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void write_partition</definition>
+        <argsstring>(const char *filename)</argsstring>
+        <name>write_partition</name>
+        <param>
+          <type>const char *</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+<para>Writes node-to-partition mapping to a file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Format: node_index partition_index</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output file path </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.cpp" line="273" column="6" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="273" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8cpp_1a838125c5219dd65df08117068c33787a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void write_trace</definition>
+        <argsstring>(const char *filename)</argsstring>
+        <name>write_trace</name>
+        <param>
+          <type>const char *</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+<para>Writes cut evolution per iteration to CSV. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Writes cut evolution per iteration to a CSV file.</para>
+<para>Format: step,cut_value</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output CSV file path </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.cpp" line="321" column="6" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="321" bodyend="330"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="kl__partition_8hpp" kindref="compound">kl_partition.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QFile&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QMap&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QTextStream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Qstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="kl__partition_8cpp_1a87bb141a82a3218ac8433cf122cf698e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8cpp_1a87bb141a82a3218ac8433cf122cf698e" kindref="member">initial_partition</ref>(QString<sp/>filepath)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>QFile<sp/>file(filepath);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!file.open(QIODevice::ReadOnly<sp/>|<sp/>QIODevice::Text))</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="kl__partition_8hpp_1a2943b1b5fcc53db76ed5df643e553404" kindref="member">edges</ref><sp/>=<sp/>vector&lt;vector&lt;int&gt;&gt;();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref><sp/>=<sp/>std::array&lt;std::vector&lt;std::vector&lt;int&gt;&gt;,<sp/>2&gt;();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>QTextStream<sp/>in(&amp;file);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!in.atEnd())<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString<sp/>line<sp/>=<sp/>in.readLine();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="kl__partition_8hpp_1a7722c8ecbb62d99aee7ce68b1752f337" kindref="member">N</ref>++;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="kl__partition_8hpp_1a5e78dbd5fd0fc01ba7b98dd15e27221e" kindref="member">M</ref><sp/>=<sp/>line.split(</highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal">).length();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;int&gt;<sp/>edge<sp/>=<sp/>vector&lt;int&gt;();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;el<sp/>:<sp/>line.split(</highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>edge.push_back(el.toLongLong());</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="kl__partition_8hpp_1a2943b1b5fcc53db76ed5df643e553404" kindref="member">edges</ref>.push_back(std::move(edge));</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[0].clear();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[1].clear();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="kl__partition_8hpp_1a7722c8ecbb62d99aee7ce68b1752f337" kindref="member">N</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(0<sp/>==<sp/>i<sp/>%<sp/>2)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[0].push_back({i});</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[1].push_back({i});</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54" refid="kl__partition_8cpp_1add0f8d8534b753d724adac13fcd8197d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8cpp_1add0f8d8534b753d724adac13fcd8197d" kindref="member">compute_cut</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>cut<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;A<sp/>:<sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[0])<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>u<sp/>:<sp/>A)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;B<sp/>:<sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[1])<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>v<sp/>:<sp/>B)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cut<sp/>+=<sp/><ref refid="kl__partition_8hpp_1a2943b1b5fcc53db76ed5df643e553404" kindref="member">edges</ref>[u][v];</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cut;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83" refid="kl__partition_8cpp_1aa34c985301df7cde4c1c68d92abb7c35" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8cpp_1aa34c985301df7cde4c1c68d92abb7c35" kindref="member">compute_DV</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;int&gt;<sp/>&amp;C,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>p)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>external_connections<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>internal_connections<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>u<sp/>:<sp/>C)<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;cl<sp/>:<sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[p])<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(&amp;cl<sp/>==<sp/>&amp;C)</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>v<sp/>:<sp/>cl)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internal_connections<sp/>+=<sp/><ref refid="kl__partition_8hpp_1a2943b1b5fcc53db76ed5df643e553404" kindref="member">edges</ref>[u][v];</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;cl<sp/>:<sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[1<sp/>-<sp/>p])<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>v<sp/>:<sp/>cl)</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>external_connections<sp/>+=<sp/><ref refid="kl__partition_8hpp_1a2943b1b5fcc53db76ed5df643e553404" kindref="member">edges</ref>[u][v];</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>external_connections<sp/>-<sp/>internal_connections;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="kl__partition_8cpp_1a01d2d5ab4c8d0d4cb049c0cb2c803a99" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8cpp_1a01d2d5ab4c8d0d4cb049c0cb2c803a99" kindref="member">kl_gain</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;int&gt;<sp/>&amp;A,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;int&gt;<sp/>&amp;B)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Dab<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>u<sp/>:<sp/>A)</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>v<sp/>:<sp/>B)</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Dab<sp/>+=<sp/><ref refid="kl__partition_8hpp_1a2943b1b5fcc53db76ed5df643e553404" kindref="member">edges</ref>[u][v];</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8cpp_1aa34c985301df7cde4c1c68d92abb7c35" kindref="member">compute_DV</ref>(A,<sp/>0)<sp/>+<sp/><ref refid="kl__partition_8cpp_1aa34c985301df7cde4c1c68d92abb7c35" kindref="member">compute_DV</ref>(B,<sp/>1)<sp/>-<sp/>2<sp/>*<sp/>Dab;<sp/></highlight><highlight class="comment">//<sp/>▲g</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="kl__partition_8cpp_1a49addcfe8c198526df579d1d13a426d6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8cpp_1a49addcfe8c198526df579d1d13a426d6" kindref="member">kl_pass</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n0<sp/>=<sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[0].size();</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n1<sp/>=<sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[1].size();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;bool&gt;<sp/>lock0(n0,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;bool&gt;<sp/>lock1(n1,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;int&gt;<sp/>idx0,<sp/>idx1,<sp/>gains;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="kl__partition_8hpp_1a4845130b2beafada0b89aff277c3317f" kindref="member">cut_trace</ref>.clear();</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="kl__partition_8hpp_1a4845130b2beafada0b89aff277c3317f" kindref="member">cut_trace</ref>.push_back(<ref refid="kl__partition_8cpp_1add0f8d8534b753d724adac13fcd8197d" kindref="member">compute_cut</ref>());</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>step<sp/>=<sp/>0;<sp/>step<sp/>&lt;<sp/>std::min(n0,<sp/>n1);<sp/>++step)<sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>best_g<sp/>=<sp/>INT_MIN;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bi<sp/>=<sp/>-1,<sp/>bj<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>n0;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(lock0[i])</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>n1;<sp/>++j)<sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(lock1[j])</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>g<sp/>=<sp/><ref refid="kl__partition_8cpp_1a01d2d5ab4c8d0d4cb049c0cb2c803a99" kindref="member">kl_gain</ref>(<ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[0][i],<sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[1][j]);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g<sp/>&gt;<sp/>best_g)<sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>best_g<sp/>=<sp/>g;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bi<sp/>=<sp/>i;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bj<sp/>=<sp/>j;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bi<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lock0[bi]<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lock1[bj]<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>idx0.push_back(bi);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>idx1.push_back(bj);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gains.push_back(best_g);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::swap(<ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[0][bi],<sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[1][bj]);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sum<sp/>=<sp/>0,<sp/>best<sp/>=<sp/>INT_MIN,<sp/>k<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>gains.size();<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sum<sp/>+=<sp/>gains[i];</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sum<sp/>&gt;<sp/>best)<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>best<sp/>=<sp/>sum;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>k<sp/>=<sp/>i;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>rollback<sp/>swaps<sp/>after<sp/>best<sp/>prefix</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>gains.size()<sp/>-<sp/>1;<sp/>i<sp/>&gt;<sp/>k;<sp/>--i)<sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::swap(<ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[0][idx0[i]],<sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[1][idx1[i]]);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="kl__partition_8hpp_1a4845130b2beafada0b89aff277c3317f" kindref="member">cut_trace</ref>.push_back(<ref refid="kl__partition_8cpp_1add0f8d8534b753d724adac13fcd8197d" kindref="member">compute_cut</ref>());</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="206" refid="kl__partition_8cpp_1a37f39f025535112ebaec0dd0ac583afd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8cpp_1a37f39f025535112ebaec0dd0ac583afd" kindref="member">cluster_variance</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;int&gt;<sp/>&amp;C)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sum<sp/>=<sp/>0.0,<sp/>sum2<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>cnt<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>u<sp/>:<sp/>C)<sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>v<sp/>=<sp/>0;<sp/>v<sp/>&lt;<sp/><ref refid="kl__partition_8hpp_1a7722c8ecbb62d99aee7ce68b1752f337" kindref="member">N</ref>;<sp/>++v)<sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x<sp/>=<sp/><ref refid="kl__partition_8hpp_1a2943b1b5fcc53db76ed5df643e553404" kindref="member">edges</ref>[u][v];</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sum<sp/>+=<sp/>x;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sum2<sp/>+=<sp/>x<sp/>*<sp/>x;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cnt++;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>mean<sp/>=<sp/>sum<sp/>/<sp/>cnt;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(sum2<sp/>/<sp/>cnt)<sp/>-<sp/>(mean<sp/>*<sp/>mean);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="230" refid="kl__partition_8cpp_1ab872a667ec713129635bc000db1ad613" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8cpp_1ab872a667ec713129635bc000db1ad613" kindref="member">cluster_partition</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>p)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;vector&lt;int&gt;&gt;<sp/>&amp;clusters<sp/>=<sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[p];</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;bool&gt;<sp/>merged(clusters.size(),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;vector&lt;int&gt;&gt;<sp/>result;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>clusters.size();<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(merged[i])</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;int&gt;<sp/>cur<sp/>=<sp/>clusters[i];</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>var_cur<sp/>=<sp/><ref refid="kl__partition_8cpp_1a37f39f025535112ebaec0dd0ac583afd" kindref="member">cluster_variance</ref>(cur);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>i<sp/>+<sp/>1;<sp/>j<sp/>&lt;<sp/>clusters.size();<sp/>++j)<sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(merged[j])</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;int&gt;<sp/>tmp<sp/>=<sp/>cur;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tmp.insert(tmp.end(),<sp/>clusters[j].begin(),<sp/>clusters[j].end());</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>var_new<sp/>=<sp/><ref refid="kl__partition_8cpp_1a37f39f025535112ebaec0dd0ac583afd" kindref="member">cluster_variance</ref>(tmp);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>var_old<sp/>=<sp/>var_cur<sp/>+<sp/><ref refid="kl__partition_8cpp_1a37f39f025535112ebaec0dd0ac583afd" kindref="member">cluster_variance</ref>(clusters[j]);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(var_new<sp/>&lt;<sp/>var_old)<sp/>{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cur<sp/>=<sp/>std::move(tmp);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>var_cur<sp/>=<sp/>var_new;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>merged[j]<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(std::move(cur));</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>clusters.swap(result);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273" refid="kl__partition_8cpp_1a16e2544f842cc0163cfcebee9a0f6483" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8cpp_1a16e2544f842cc0163cfcebee9a0f6483" kindref="member">write_partition</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename)</highlight></codeline>
+<codeline lineno="274"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/>QFile<sp/>file(filename);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!file.open(QFile::WriteOnly<sp/>|<sp/>QFile::Truncate))</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/>QTextStream<sp/>out(&amp;file);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>p<sp/>=<sp/>0;<sp/>p<sp/>&lt;<sp/>2;<sp/>++p)<sp/>{</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;cl<sp/>:<sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[p])<sp/>{</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>v<sp/>:<sp/>cl)<sp/>{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out<sp/>&lt;&lt;<sp/>v<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>p<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="288"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="296" refid="kl__partition_8cpp_1a73773552b90fec6ea5827868d2f0b7b6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8cpp_1a73773552b90fec6ea5827868d2f0b7b6" kindref="member">write_metrics</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename)</highlight></codeline>
+<codeline lineno="297"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>QFile<sp/>file(filename);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!file.open(QFile::WriteOnly<sp/>|<sp/>QFile::Truncate))</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>QTextStream<sp/>out(&amp;file);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>var0<sp/>=<sp/>0.0,<sp/>var1<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;c<sp/>:<sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[0])</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>var0<sp/>+=<sp/><ref refid="kl__partition_8cpp_1a37f39f025535112ebaec0dd0ac583afd" kindref="member">cluster_variance</ref>(c);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;c<sp/>:<sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>[1])</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>var1<sp/>+=<sp/><ref refid="kl__partition_8cpp_1a37f39f025535112ebaec0dd0ac583afd" kindref="member">cluster_variance</ref>(c);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;v<sp/>:<sp/><ref refid="kl__partition_8hpp_1a4845130b2beafada0b89aff277c3317f" kindref="member">cut_trace</ref>)</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;CUT<sp/>:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>v<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/>out<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;VAR<sp/>Partition<sp/>A<sp/>:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>var0<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/>out<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;VAR<sp/>Partition<sp/>B<sp/>:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>var1<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="321" refid="kl__partition_8cpp_1a838125c5219dd65df08117068c33787a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8cpp_1a838125c5219dd65df08117068c33787a" kindref="member">write_trace</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename)</highlight></codeline>
+<codeline lineno="322"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/>QFile<sp/>file(filename);</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!file.open(QFile::WriteOnly<sp/>|<sp/>QFile::Truncate))</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/>QTextStream<sp/>out(&amp;file);</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="kl__partition_8hpp_1a4845130b2beafada0b89aff277c3317f" kindref="member">cut_trace</ref>.size();<sp/>++i)</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out<sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="kl__partition_8hpp_1a4845130b2beafada0b89aff277c3317f" kindref="member">cut_trace</ref>[i]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="330"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Nima/Documents/KL/kl_partition.cpp"/>
+  </compounddef>
+</doxygen>

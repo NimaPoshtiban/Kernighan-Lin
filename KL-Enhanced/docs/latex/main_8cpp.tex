@@ -1,0 +1,49 @@
+\doxysection{C\+:/\+Users/\+Nima/\+Documents/\+KL/main.cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{C:/Users/Nima/Documents/KL/main.cpp@{C:/Users/Nima/Documents/KL/main.cpp}}
+
+
+Entry point for the KL partition program.  
+
+
+{\ttfamily \#include $<$QCore\+Application$>$}\newline
+{\ttfamily \#include $<$QDebug$>$}\newline
+{\ttfamily \#include $<$QFile$>$}\newline
+{\ttfamily \#include $<$QString$>$}\newline
+{\ttfamily \#include "{}kl\+\_\+partition.\+hpp"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Entry point for the KL partition program. 
+
+This program reads an adjacency matrix from a CSV file specified via command line or console input, performs KL partitioning with clustering, and writes results to output files\+:
+\begin{DoxyItemize}
+\item partition.\+txt \+: node -\/\texorpdfstring{$>$}{>} partition mapping
+\item metrics.\+txt \+: cut and cluster variance metrics
+\item trace.\+csv \+: cut evolution during KL swaps
+\end{DoxyItemize}
+
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./KL\ input.csv}
+
+\end{DoxyCode}
+ 
+
+Definition in file \mbox{\hyperlink{}{main.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{main_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+

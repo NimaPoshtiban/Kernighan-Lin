@@ -1,0 +1,606 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.15.0" xml:lang="en-US">
+  <compounddef id="kl__partition_8hpp" kind="file" language="C++">
+    <compoundname>kl_partition.hpp</compoundname>
+    <includes local="no">Qstring</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="kl__partition_8cpp" local="yes">C:/Users/Nima/Documents/KL/kl_partition.cpp</includedby>
+    <includedby refid="main_8cpp" local="yes">C:/Users/Nima/Documents/KL/main.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>C:/Users/Nima/Documents/KL/kl_partition.hpp</label>
+        <link refid="kl__partition_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Qstring</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>C:/Users/Nima/Documents/KL/kl_partition.cpp</label>
+        <link refid="kl__partition_8cpp"/>
+      </node>
+      <node id="1">
+        <label>C:/Users/Nima/Documents/KL/kl_partition.hpp</label>
+        <link refid="kl__partition_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>C:/Users/Nima/Documents/KL/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="kl__partition_8hpp_1a4845130b2beafada0b89aff277c3317f" prot="public" static="yes" mutable="no">
+        <type>vector&lt; int &gt;</type>
+        <definition>vector&lt;int&gt; cut_trace</definition>
+        <argsstring></argsstring>
+        <name>cut_trace</name>
+        <briefdescription>
+<para>Stores cut size after each KL swap. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.hpp" line="90" column="15" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.hpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="kl__partition_8hpp_1a2943b1b5fcc53db76ed5df643e553404" prot="public" static="yes" mutable="no">
+        <type>vector&lt; vector&lt; int &gt; &gt;</type>
+        <definition>vector&lt;vector&lt;int&gt; &gt; edges</definition>
+        <argsstring></argsstring>
+        <name>edges</name>
+        <briefdescription>
+<para>Adjacency matrix storing edge weights. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Each row corresponds to a node. edges[i][j] is the weight of the edge from node i to node j. Diagonal elements (i==j) represent the node itself and are zero. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.hpp" line="33" column="15" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="kl__partition_8hpp_1a5e78dbd5fd0fc01ba7b98dd15e27221e" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int M</definition>
+        <argsstring></argsstring>
+        <name>M</name>
+        <initializer>{}</initializer>
+        <briefdescription>
+<para>Total number of edges in the hypergraph. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.hpp" line="21" column="12" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.hpp" bodystart="21" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="variable" id="kl__partition_8hpp_1a7722c8ecbb62d99aee7ce68b1752f337" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int N</definition>
+        <argsstring></argsstring>
+        <name>N</name>
+        <initializer>{}</initializer>
+        <briefdescription>
+<para>Total number of nodes in the hypergraph. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.hpp" line="16" column="12" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.hpp" bodystart="16" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="variable" id="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" prot="public" static="yes" mutable="no">
+        <type>std::array&lt; std::vector&lt; std::vector&lt; int &gt; &gt;, 2 &gt;</type>
+        <definition>std::array&lt;std::vector&lt;std::vector&lt;int&gt; &gt;, 2&gt; part</definition>
+        <argsstring></argsstring>
+        <name>part</name>
+        <briefdescription>
+<para>Partition data structure. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>part[0] and part[1] store the clusters in partition 0 and 1 respectively. Each cluster is a vector of node indices. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.hpp" line="45" column="19" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="kl__partition_8hpp_1ab872a667ec713129635bc000db1ad613" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void cluster_partition</definition>
+        <argsstring>(int p) noexcept</argsstring>
+        <name>cluster_partition</name>
+        <param>
+          <type>int</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Performs clustering merge on a given partition. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Iteratively merges clusters if variance decreases.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>p</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Partition index (0 or 1)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Performs clustering merge on a given partition.</para>
+<para>Iteratively merges clusters if combined variance decreases.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>p</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Partition index (0 or 1) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.hpp" line="82" column="6" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="230" bodyend="264" declfile="C:/Users/Nima/Documents/KL/kl_partition.hpp" declline="82" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8hpp_1a37f39f025535112ebaec0dd0ac583afd" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double cluster_variance</definition>
+        <argsstring>(const vector&lt; int &gt; &amp;C) noexcept</argsstring>
+        <name>cluster_variance</name>
+        <param>
+          <type>const vector&lt; int &gt; &amp;</type>
+          <declname>C</declname>
+        </param>
+        <briefdescription>
+<para>Computes variance of a cluster. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Variance is used to measure how &quot;spread out&quot; the connection weights are within a cluster. Minimizing variance when merging clusters ensures that highly connected nodes are grouped together, improving cluster cohesion. (as the the professor mentioned)</para>
+<para>Given a cluster <formula id="0">$C$</formula> of nodes, let <formula id="1">$w_{uv}$</formula> be the weight of the edge from node <formula id="2">$u$</formula> to node <formula id="3">$v$</formula>. The variance is computed as:</para>
+<para><formula id="4">\[\text{Var}(C) = \frac{1}{|C|\cdot N} \sum_{u \in C} \sum_{v=0}^{N-1} w_{uv}^2
+- \left(\frac{1}{|C|\cdot N} \sum_{u \in C} \sum_{v=0}^{N-1} w_{uv} \right)^2
+\]</formula></para>
+<para>where <formula id="5">$N$</formula> is the total number of nodes in the hypergraph.</para>
+<para>Lower variance indicates that nodes in the cluster have more uniform and strong connections among themselves.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>C</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cluster of nodes </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Variance value</para>
+</simplesect>
+Variance is calculated over all edge weights within the cluster.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>C</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cluster of nodes </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Variance value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.hpp" line="74" column="8" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="206" bodyend="222" declfile="C:/Users/Nima/Documents/KL/kl_partition.hpp" declline="74" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8hpp_1add0f8d8534b753d724adac13fcd8197d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int compute_cut</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>compute_cut</name>
+        <briefdescription>
+<para>Computes total cut size for current partition. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Cut is defined as sum of edge weights from partition 0 to partition 1. <simplesect kind="return"><para>Total cut value</para>
+</simplesect>
+Computes total cut size for current partition.</para>
+<para>Cut is defined as the sum of all edge weights from nodes in partition 0 to nodes in partition 1.</para>
+<para><simplesect kind="return"><para>Total cut value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.hpp" line="113" column="5" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="54" bodyend="68" declfile="C:/Users/Nima/Documents/KL/kl_partition.hpp" declline="113" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8hpp_1aa34c985301df7cde4c1c68d92abb7c35" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int compute_DV</definition>
+        <argsstring>(const vector&lt; int &gt; &amp;C, int p) noexcept</argsstring>
+        <name>compute_DV</name>
+        <param>
+          <type>const vector&lt; int &gt; &amp;</type>
+          <declname>C</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Computes D(V) for a cluster. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>D(V) = external_connections - internal_connections</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>C</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cluster of nodes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Partition index (0 or 1) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Difference between external and internal connections</para>
+</simplesect>
+D(V) = external_connections - internal_connections</para>
+<para>External connections are edges from this cluster to all clusters in the opposite partition. Internal connections are edges from this cluster to other clusters in the same partition.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>C</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cluster of nodes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Partition index (0 or 1) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Difference between external and internal connections </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.hpp" line="123" column="5" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="83" bodyend="102" declfile="C:/Users/Nima/Documents/KL/kl_partition.hpp" declline="123" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8hpp_1a87bb141a82a3218ac8433cf122cf698e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void initial_partition</definition>
+        <argsstring>(QString filepath) noexcept</argsstring>
+        <name>initial_partition</name>
+        <param>
+          <type>QString</type>
+          <declname>filepath</declname>
+        </param>
+        <briefdescription>
+<para>Initializes partitions from an adjacency matrix file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filepath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path to csv file containing adjacency matrix (file extension is not important)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Initializes partitions from an adjacency matrix file.</para>
+<para>Reads a CSV file where each row corresponds to a node and contains edge weights to all other nodes. Diagonal elements represent the node itself and are ignored. Initializes a simple even-odd partition: nodes 0,2,4,... go to partition 0, others to partition 1.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filepath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path to the CSV file containing adjacency matrix </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.hpp" line="101" column="6" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="17" bodyend="45" declfile="C:/Users/Nima/Documents/KL/kl_partition.hpp" declline="101" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8hpp_1a01d2d5ab4c8d0d4cb049c0cb2c803a99" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int kl_gain</definition>
+        <argsstring>(const vector&lt; int &gt; &amp;A, const vector&lt; int &gt; &amp;B) noexcept</argsstring>
+        <name>kl_gain</name>
+        <param>
+          <type>const vector&lt; int &gt; &amp;</type>
+          <declname>A</declname>
+        </param>
+        <param>
+          <type>const vector&lt; int &gt; &amp;</type>
+          <declname>B</declname>
+        </param>
+        <briefdescription>
+<para>Computes KL gain for swapping two clusters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cluster from partition 0 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>B</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cluster from partition 1 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>KL gain value</para>
+</simplesect>
+Computes KL gain for swapping two clusters.</para>
+<para>Gain = D(A) + D(B) - 2 * edge_sum_between_A_B</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cluster from partition 0 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>B</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cluster from partition 1 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>KL gain value</para>
+</simplesect>
+Performs one Kernighan–Lin pass</para>
+<para>Swaps cluster pairs between partitions to maximize gain. Records the cut evolution in global cut_trace.</para>
+<para>Algorithm:<orderedlist>
+<listitem><para>For each unlocked cluster in partition 0, compute gain with each unlocked cluster in partition 1.</para>
+</listitem><listitem><para>Select the pair with maximum gain and swap them.</para>
+</listitem><listitem><para>Lock the swapped clusters.</para>
+</listitem><listitem><para>Repeat until all clusters are locked or no positive gain.</para>
+</listitem><listitem><para>Rollback swaps after best prefix sum of gains. </para>
+</listitem></orderedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.hpp" line="132" column="5" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="127" bodyend="135" declfile="C:/Users/Nima/Documents/KL/kl_partition.hpp" declline="132" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8hpp_1a49addcfe8c198526df579d1d13a426d6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void kl_pass</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>kl_pass</name>
+        <briefdescription>
+<para>Performs one pass of the Kernighan–Lin algorithm. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Selects cluster pairs to swap to maximize gain. Records cut evolution in cut_trace. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.hpp" line="142" column="6" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="137" bodyend="197" declfile="C:/Users/Nima/Documents/KL/kl_partition.hpp" declline="142" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8hpp_1a73773552b90fec6ea5827868d2f0b7b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void write_metrics</definition>
+        <argsstring>(const char *filename)</argsstring>
+        <name>write_metrics</name>
+        <param>
+          <type>const char *</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+<para>Writes final cut and cluster variances to a file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Also writes the evolution of cuts stored in cut_trace.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output file path</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Writes final cut and cluster variances to a file.</para>
+<para>Also writes all cut values stored in cut_trace.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output file path </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.hpp" line="163" column="6" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="296" bodyend="313" declfile="C:/Users/Nima/Documents/KL/kl_partition.hpp" declline="163" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8hpp_1a16e2544f842cc0163cfcebee9a0f6483" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void write_partition</definition>
+        <argsstring>(const char *filename)</argsstring>
+        <name>write_partition</name>
+        <param>
+          <type>const char *</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+<para>Writes node-to-partition mapping to a file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Format: node_index partition_index</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output file path </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.hpp" line="154" column="6" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="273" bodyend="288" declfile="C:/Users/Nima/Documents/KL/kl_partition.hpp" declline="154" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="kl__partition_8hpp_1a838125c5219dd65df08117068c33787a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void write_trace</definition>
+        <argsstring>(const char *filename)</argsstring>
+        <name>write_trace</name>
+        <param>
+          <type>const char *</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+<para>Writes cut evolution per iteration to a CSV file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Format: step,cut_value</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output file path</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Writes cut evolution per iteration to a CSV file.</para>
+<para>Format: step,cut_value</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output CSV file path </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Nima/Documents/KL/kl_partition.hpp" line="172" column="6" bodyfile="C:/Users/Nima/Documents/KL/kl_partition.cpp" bodystart="321" bodyend="330" declfile="C:/Users/Nima/Documents/KL/kl_partition.hpp" declline="172" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>KL_PARTITION_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KL_PARTITION_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Qstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">std::vector;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>=========================</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/><sp/><sp/>Global<sp/>Problem<sp/>Parameters</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/><sp/><sp/>=========================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="kl__partition_8hpp_1a7722c8ecbb62d99aee7ce68b1752f337" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8hpp_1a7722c8ecbb62d99aee7ce68b1752f337" kindref="member">N</ref>{};</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="kl__partition_8hpp_1a5e78dbd5fd0fc01ba7b98dd15e27221e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8hpp_1a5e78dbd5fd0fc01ba7b98dd15e27221e" kindref="member">M</ref>{};</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>=========================</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/><sp/><sp/>Hypergraph<sp/>Storage</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/><sp/><sp/>=========================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="kl__partition_8hpp_1a2943b1b5fcc53db76ed5df643e553404" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>vector&lt;vector&lt;int&gt;&gt;<sp/><ref refid="kl__partition_8hpp_1a2943b1b5fcc53db76ed5df643e553404" kindref="member">edges</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>=========================</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/><sp/><sp/>Main<sp/>Partition</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/><sp/><sp/>=========================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::array&lt;std::vector&lt;std::vector&lt;int&gt;&gt;,<sp/>2&gt;<sp/><ref refid="kl__partition_8hpp_1ac391f4eb4bd55b3f257a8adbe880a177" kindref="member">part</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>=========================</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/>Clustering<sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/>=========================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8hpp_1a37f39f025535112ebaec0dd0ac583afd" kindref="member">cluster_variance</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;int&gt;<sp/>&amp;C)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8hpp_1ab872a667ec713129635bc000db1ad613" kindref="member">cluster_partition</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>p)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>=========================</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/>Metrics<sp/>/<sp/>Logging</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/>=========================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="kl__partition_8hpp_1a4845130b2beafada0b89aff277c3317f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>vector&lt;int&gt;<sp/><ref refid="kl__partition_8hpp_1a4845130b2beafada0b89aff277c3317f" kindref="member">cut_trace</ref>;<sp/></highlight><highlight class="comment">//<sp/>cut<sp/>per<sp/>iter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>=========================</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/>Initialization<sp/></highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/>=========================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8hpp_1a87bb141a82a3218ac8433cf122cf698e" kindref="member">initial_partition</ref>(QString<sp/>filepath)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>=========================</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/>Evaluation</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/>=========================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8hpp_1add0f8d8534b753d724adac13fcd8197d" kindref="member">compute_cut</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8cpp_1aa34c985301df7cde4c1c68d92abb7c35" kindref="member">compute_DV</ref>(const<sp/>vector&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/>&amp;C,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>p)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8cpp_1a01d2d5ab4c8d0d4cb049c0cb2c803a99" kindref="member">kl_gain</ref>(const<sp/>vector&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/>&amp;A,<sp/>const<sp/>vector&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/>&amp;B)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>=========================</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/><sp/><sp/>KL<sp/>Algorithm</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/><sp/><sp/>=========================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8cpp_1a49addcfe8c198526df579d1d13a426d6" kindref="member">kl_pass</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>=========================</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/>Output<sp/>(FILE-BASED<sp/>ONLY)</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/><sp/><sp/>=========================<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8cpp_1a16e2544f842cc0163cfcebee9a0f6483" kindref="member">write_partition</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8cpp_1a73773552b90fec6ea5827868d2f0b7b6" kindref="member">write_metrics</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="kl__partition_8cpp_1a838125c5219dd65df08117068c33787a" kindref="member">write_trace</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Nima/Documents/KL/kl_partition.hpp"/>
+  </compounddef>
+</doxygen>

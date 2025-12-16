@@ -1,0 +1,234 @@
+\doxysection{C\+:/\+Users/\+Nima/\+Documents/\+KL/kl\+\_\+partition.cpp File Reference}
+\hypertarget{kl__partition_8cpp}{}\label{kl__partition_8cpp}\index{C:/Users/Nima/Documents/KL/kl\_partition.cpp@{C:/Users/Nima/Documents/KL/kl\_partition.cpp}}
+{\ttfamily \#include "{}kl\+\_\+partition.\+hpp"{}}\newline
+{\ttfamily \#include $<$QFile$>$}\newline
+{\ttfamily \#include $<$QMap$>$}\newline
+{\ttfamily \#include $<$QText\+Stream$>$}\newline
+{\ttfamily \#include $<$Qstring$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{kl__partition_8cpp_ab872a667ec713129635bc000db1ad613}{cluster\+\_\+partition}} (int p) noexcept
+\begin{DoxyCompactList}\small\item\em Performs clustering merge for a given partition. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{kl__partition_8cpp_a37f39f025535112ebaec0dd0ac583afd}{cluster\+\_\+variance}} (const vector$<$ int $>$ \&C) noexcept
+\begin{DoxyCompactList}\small\item\em Computes variance of a cluster. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kl__partition_8cpp_add0f8d8534b753d724adac13fcd8197d}{compute\+\_\+cut}} () noexcept
+\begin{DoxyCompactList}\small\item\em Computes the total cut for current partitions. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kl__partition_8cpp_aa34c985301df7cde4c1c68d92abb7c35}{compute\+\_\+\+DV}} (const vector$<$ int $>$ \&C, int p) noexcept
+\begin{DoxyCompactList}\small\item\em Computes D(\+V) for a cluster. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kl__partition_8cpp_a87bb141a82a3218ac8433cf122cf698e}{initial\+\_\+partition}} (QString filepath) noexcept
+\begin{DoxyCompactList}\small\item\em Initializes the partitions from a CSV adjacency matrix file. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kl__partition_8cpp_a01d2d5ab4c8d0d4cb049c0cb2c803a99}{kl\+\_\+gain}} (const vector$<$ int $>$ \&A, const vector$<$ int $>$ \&B) noexcept
+\begin{DoxyCompactList}\small\item\em Computes the KL gain of swapping two clusters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kl__partition_8cpp_a49addcfe8c198526df579d1d13a426d6}{kl\+\_\+pass}} () noexcept
+\begin{DoxyCompactList}\small\item\em Performs one pass of the Kernighan–\+Lin algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kl__partition_8cpp_a73773552b90fec6ea5827868d2f0b7b6}{write\+\_\+metrics}} (const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Writes final cut evolution and cluster variances to a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kl__partition_8cpp_a16e2544f842cc0163cfcebee9a0f6483}{write\+\_\+partition}} (const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Writes node-\/to-\/partition mapping to a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kl__partition_8cpp_a838125c5219dd65df08117068c33787a}{write\+\_\+trace}} (const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Writes cut evolution per iteration to CSV. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{kl__partition_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{kl__partition_8cpp_ab872a667ec713129635bc000db1ad613}\index{kl\_partition.cpp@{kl\_partition.cpp}!cluster\_partition@{cluster\_partition}}
+\index{cluster\_partition@{cluster\_partition}!kl\_partition.cpp@{kl\_partition.cpp}}
+\doxysubsubsection{\texorpdfstring{cluster\_partition()}{cluster\_partition()}}
+{\footnotesize\ttfamily \label{kl__partition_8cpp_ab872a667ec713129635bc000db1ad613} 
+void cluster\+\_\+partition (\begin{DoxyParamCaption}\item[{int}]{p}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Performs clustering merge for a given partition. 
+
+Performs clustering merge on a given partition.
+
+Iteratively merges clusters if combined variance decreases.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Partition index (0 or 1) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{kl__partition_8cpp_a37f39f025535112ebaec0dd0ac583afd}\index{kl\_partition.cpp@{kl\_partition.cpp}!cluster\_variance@{cluster\_variance}}
+\index{cluster\_variance@{cluster\_variance}!kl\_partition.cpp@{kl\_partition.cpp}}
+\doxysubsubsection{\texorpdfstring{cluster\_variance()}{cluster\_variance()}}
+{\footnotesize\ttfamily \label{kl__partition_8cpp_a37f39f025535112ebaec0dd0ac583afd} 
+double cluster\+\_\+variance (\begin{DoxyParamCaption}\item[{const vector$<$ int $>$ \&}]{C}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Computes variance of a cluster. 
+
+Variance is calculated over all edge weights within the cluster.
+
+
+\begin{DoxyParams}{Parameters}
+{\em C} & Cluster of nodes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Variance value 
+\end{DoxyReturn}
+\Hypertarget{kl__partition_8cpp_add0f8d8534b753d724adac13fcd8197d}\index{kl\_partition.cpp@{kl\_partition.cpp}!compute\_cut@{compute\_cut}}
+\index{compute\_cut@{compute\_cut}!kl\_partition.cpp@{kl\_partition.cpp}}
+\doxysubsubsection{\texorpdfstring{compute\_cut()}{compute\_cut()}}
+{\footnotesize\ttfamily \label{kl__partition_8cpp_add0f8d8534b753d724adac13fcd8197d} 
+int compute\+\_\+cut (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Computes the total cut for current partitions. 
+
+Computes total cut size for current partition.
+
+Cut is defined as the sum of all edge weights from nodes in partition 0 to nodes in partition 1.
+
+\begin{DoxyReturn}{Returns}
+Total cut value 
+\end{DoxyReturn}
+\Hypertarget{kl__partition_8cpp_aa34c985301df7cde4c1c68d92abb7c35}\index{kl\_partition.cpp@{kl\_partition.cpp}!compute\_DV@{compute\_DV}}
+\index{compute\_DV@{compute\_DV}!kl\_partition.cpp@{kl\_partition.cpp}}
+\doxysubsubsection{\texorpdfstring{compute\_DV()}{compute\_DV()}}
+{\footnotesize\ttfamily \label{kl__partition_8cpp_aa34c985301df7cde4c1c68d92abb7c35} 
+int compute\+\_\+\+DV (\begin{DoxyParamCaption}\item[{const vector$<$ int $>$ \&}]{C}{, }\item[{int}]{p}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Computes D(\+V) for a cluster. 
+
+D(\+V) = external\+\_\+connections -\/ internal\+\_\+connections
+
+External connections are edges from this cluster to all clusters in the opposite partition. Internal connections are edges from this cluster to other clusters in the same partition.
+
+
+\begin{DoxyParams}{Parameters}
+{\em C} & Cluster of nodes \\
+\hline
+{\em p} & Partition index (0 or 1) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Difference between external and internal connections 
+\end{DoxyReturn}
+\Hypertarget{kl__partition_8cpp_a87bb141a82a3218ac8433cf122cf698e}\index{kl\_partition.cpp@{kl\_partition.cpp}!initial\_partition@{initial\_partition}}
+\index{initial\_partition@{initial\_partition}!kl\_partition.cpp@{kl\_partition.cpp}}
+\doxysubsubsection{\texorpdfstring{initial\_partition()}{initial\_partition()}}
+{\footnotesize\ttfamily \label{kl__partition_8cpp_a87bb141a82a3218ac8433cf122cf698e} 
+void initial\+\_\+partition (\begin{DoxyParamCaption}\item[{QString}]{filepath}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Initializes the partitions from a CSV adjacency matrix file. 
+
+Initializes partitions from an adjacency matrix file.
+
+Reads a CSV file where each row corresponds to a node and contains edge weights to all other nodes. Diagonal elements represent the node itself and are ignored. Initializes a simple even-\/odd partition\+: nodes 0,2,4,... go to partition 0, others to partition 1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & Path to the CSV file containing adjacency matrix \\
+\hline
+\end{DoxyParams}
+\Hypertarget{kl__partition_8cpp_a01d2d5ab4c8d0d4cb049c0cb2c803a99}\index{kl\_partition.cpp@{kl\_partition.cpp}!kl\_gain@{kl\_gain}}
+\index{kl\_gain@{kl\_gain}!kl\_partition.cpp@{kl\_partition.cpp}}
+\doxysubsubsection{\texorpdfstring{kl\_gain()}{kl\_gain()}}
+{\footnotesize\ttfamily \label{kl__partition_8cpp_a01d2d5ab4c8d0d4cb049c0cb2c803a99} 
+int kl\+\_\+gain (\begin{DoxyParamCaption}\item[{const vector$<$ int $>$ \&}]{A}{, }\item[{const vector$<$ int $>$ \&}]{B}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Computes the KL gain of swapping two clusters. 
+
+Computes KL gain for swapping two clusters.
+
+Gain = D(\+A) + D(\+B) -\/ 2 \texorpdfstring{$\ast$}{*} edge\+\_\+sum\+\_\+between\+\_\+\+A\+\_\+B
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & Cluster from partition 0 \\
+\hline
+{\em B} & Cluster from partition 1 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+KL gain value
+\end{DoxyReturn}
+Performs one Kernighan–\+Lin pass
+
+Swaps cluster pairs between partitions to maximize gain. Records the cut evolution in global cut\+\_\+trace.
+
+Algorithm\+:
+\begin{DoxyEnumerate}
+\item For each unlocked cluster in partition 0, compute gain with each unlocked cluster in partition 1.
+\item Select the pair with maximum gain and swap them.
+\item Lock the swapped clusters.
+\item Repeat until all clusters are locked or no positive gain.
+\item Rollback swaps after best prefix sum of gains. 
+\end{DoxyEnumerate}\Hypertarget{kl__partition_8cpp_a49addcfe8c198526df579d1d13a426d6}\index{kl\_partition.cpp@{kl\_partition.cpp}!kl\_pass@{kl\_pass}}
+\index{kl\_pass@{kl\_pass}!kl\_partition.cpp@{kl\_partition.cpp}}
+\doxysubsubsection{\texorpdfstring{kl\_pass()}{kl\_pass()}}
+{\footnotesize\ttfamily \label{kl__partition_8cpp_a49addcfe8c198526df579d1d13a426d6} 
+void kl\+\_\+pass (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Performs one pass of the Kernighan–\+Lin algorithm. 
+
+Selects cluster pairs to swap to maximize gain. Records cut evolution in cut\+\_\+trace. \Hypertarget{kl__partition_8cpp_a73773552b90fec6ea5827868d2f0b7b6}\index{kl\_partition.cpp@{kl\_partition.cpp}!write\_metrics@{write\_metrics}}
+\index{write\_metrics@{write\_metrics}!kl\_partition.cpp@{kl\_partition.cpp}}
+\doxysubsubsection{\texorpdfstring{write\_metrics()}{write\_metrics()}}
+{\footnotesize\ttfamily \label{kl__partition_8cpp_a73773552b90fec6ea5827868d2f0b7b6} 
+void write\+\_\+metrics (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Writes final cut evolution and cluster variances to a file. 
+
+Writes final cut and cluster variances to a file.
+
+Also writes all cut values stored in cut\+\_\+trace.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Output file path \\
+\hline
+\end{DoxyParams}
+\Hypertarget{kl__partition_8cpp_a16e2544f842cc0163cfcebee9a0f6483}\index{kl\_partition.cpp@{kl\_partition.cpp}!write\_partition@{write\_partition}}
+\index{write\_partition@{write\_partition}!kl\_partition.cpp@{kl\_partition.cpp}}
+\doxysubsubsection{\texorpdfstring{write\_partition()}{write\_partition()}}
+{\footnotesize\ttfamily \label{kl__partition_8cpp_a16e2544f842cc0163cfcebee9a0f6483} 
+void write\+\_\+partition (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Writes node-\/to-\/partition mapping to a file. 
+
+Format\+: node\+\_\+index partition\+\_\+index
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Output file path \\
+\hline
+\end{DoxyParams}
+\Hypertarget{kl__partition_8cpp_a838125c5219dd65df08117068c33787a}\index{kl\_partition.cpp@{kl\_partition.cpp}!write\_trace@{write\_trace}}
+\index{write\_trace@{write\_trace}!kl\_partition.cpp@{kl\_partition.cpp}}
+\doxysubsubsection{\texorpdfstring{write\_trace()}{write\_trace()}}
+{\footnotesize\ttfamily \label{kl__partition_8cpp_a838125c5219dd65df08117068c33787a} 
+void write\+\_\+trace (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Writes cut evolution per iteration to CSV. 
+
+Writes cut evolution per iteration to a CSV file.
+
+Format\+: step,cut\+\_\+value
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Output CSV file path \\
+\hline
+\end{DoxyParams}
