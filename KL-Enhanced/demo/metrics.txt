@@ -1,3 +1,0 @@
-CUT :16
-VAR Partition A :45.29
-VAR Partition B :5.36
